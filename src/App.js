@@ -1,20 +1,11 @@
 import React, { Component } from 'react'
-import Repo from './components/repo'
+import Search from './components/Search'
 
 class App extends Component {
-
-// handelQuary = () => {
-//   var i = 0, strLength = this.state.quary.length;
-//   for(i; i < strLength; i++) {
-//   this.setState({fquary : this.state.quary.replace(" ", "_")})
-// }
-// }
-
-
   render() {
     return (
       <div>
-       <Repo />
+       <Search /> 
       </div>
       );
   }

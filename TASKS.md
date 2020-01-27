@@ -6,7 +6,7 @@
 - show error message if there is one from the api - eg: rate limit, unauthorized, etc (Done)
 - align the stars count and improve css (Done)
 - fix variable height of the respoisotry item blocks (Done)
-- break down the markup in relevent components structure - this shows that you follow best practices
+- break down the markup in relevent components structure - this shows that you follow best practices (Done)
 
 
 # Interview

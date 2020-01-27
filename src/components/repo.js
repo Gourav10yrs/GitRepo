@@ -1,72 +1,21 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 
 class Repo extends Component {
 
-    state = {
-        qdata : [ ],
-        query : '',
-        count : 0,
-        loading : true,
-        errorMsg : false
-    }
-
-    componentDidMount () {
-      axios.get('https://api.github.com/search/repositories?q=topic:ruby+topic:rails')
-      .then(res =>{
-        this.setState({
-          qdata: res.data.items,
-          count: res.data.total_count,
-          loading : false})
-      })
-      }
-
-      handelSubmit =(e) =>{
-        e.preventDefault();
-        axios.get(`https://api.github.com/search/repositories?q=${this.state.query}`)
-        .then(res =>{
-          this.setState({qdata: res.data.items,
-            count: res.data.total_count,
-            loading : false
-          })
-          console.log(this.state.count)
-        })
-       
-        .catch( (error) => {
-          console.log(error)
-          this.setState({errorMsg : true})
-        })
-          
-      }
-      
-      handelChange = (e) => {
-        this.setState({
-             query : e.target.value
-        })
-      }
     
-
     render() {
         return (
           <div>
-            <form onSubmit={this.handelSubmit}>
-              <div className="input-group m-3 col-sm-6">
-                <input className="form-control" type="text" placeholder="Search Github Repository" onChange={this.handelChange}/>
-                <div className="input-group-append">
-                  <button className="btn btn-outline-secondary" type="submit">Search</button>
-                </div>
-              </div>
-            </form> 
             <div className="row">
               {
-                this.state.errorMsg && <div class="alert alert-danger" role="alert"><p>Please Try After Some Time.</p></div> 
+                this.props.errorMsg && <div class="alert alert-danger" role="alert"><p>Please Try After Some Time.</p></div> 
               }
             </div>
             <div className="row">              
                  {
-                  (this.state.loading) ? (<p className="loading-msg">Loading....</p>) : (
-                 (this.state.count) ? ( 
-                 this.state.qdata.map( (repodata) => 
+                  (this.props.loading) ? (<p className="loading-msg">Loading....</p>) : (
+                 (this.props.count) ? ( 
+                  this.props.qdata.map( (repodata) => 
                     <div className="col-sm-6" key={repodata.id}>
                       <div className="card repo-box">
                         <div className="card-body repo-body">
