@@ -2,20 +2,20 @@ import React, { Component } from 'react'
 
 class Repo extends Component {
 
-    
     render() {
+      const { allData } = this.props;
         return (
           <div>
             <div className="row">
               {
-                this.props.errorMsg && <div class="alert alert-danger" role="alert"><p>Please Try After Some Time.</p></div> 
+                allData.errorMsg && <div class="alert alert-danger" role="alert"><p>Please Try After Some Time.</p></div> 
               }
             </div>
             <div className="row">              
                  {
-                  (this.props.loading) ? (<p className="loading-msg">Loading....</p>) : (
-                 (this.props.count) ? ( 
-                  this.props.qdata.map( (repodata) => 
+                  (allData.loading) ? (<p className="loading-msg">Loading....</p>) : (
+                 (allData.count) ? ( 
+                  allData.qdata.map( (repodata) => 
                     <div className="col-sm-6" key={repodata.id}>
                       <div className="card repo-box">
                         <div className="card-body repo-body">

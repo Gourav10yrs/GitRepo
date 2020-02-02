@@ -56,13 +56,7 @@ class Search extends Component {
                 </div>
             </form>
 
-            <Repo 
-                qdata={this.state.qdata} 
-                query={this.state.query} 
-                count={this.state.count}
-                loading={this.state.loading}
-                errorMsg={this.state.errorMsg}            
-            />
+            <Repo allData={this.state} />
 
             </div>   
         );
